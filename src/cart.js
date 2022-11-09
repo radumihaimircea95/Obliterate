@@ -35,7 +35,7 @@ let generateCartItems = () => {
         let { imgURL, price, name } = search;
         return `
       <div class="cart-item">
-        <img width="100" src=${imgURL} alt="" />
+        <img width="200" src=${imgURL} alt="" />
 
         <div class="cart-details">
         
@@ -128,9 +128,9 @@ let update = (id) => {
   TotalAmount();
 };
 
-/**
- * ! Used to remove 1 selected product card from basket
- * ! using the X [cross] button
+/*
+  Used to remove 1 selected product card from basket
+   using the X [cross] button
  */
 
 let removeItem = (id) => {
@@ -142,10 +142,10 @@ let removeItem = (id) => {
   localStorage.setItem("data", JSON.stringify(basket));
 };
 
-/**
- * ! Used to calculate total amount of the selected Products
- * ! with specific quantity
- * ? When basket is blank, it will show nothing
+/*
+  Used to calculate total amount of the selected Products
+  with specific quantity
+  When basket is blank, it will show nothing
  */
 
 let TotalAmount = () => {
@@ -160,7 +160,7 @@ let TotalAmount = () => {
 
     return (label.innerHTML = `
     <h2>Total Bill :  ${amount.toFixed(2)}</h2>
-    <button class="checkout">Checkout</button>
+    <button class="checkout" onclick="checkOutItems()">Checkout</button>
     <button onclick="clearCart()" class="removeAll">Clear Cart</button>
     `);
   } else return;
@@ -168,9 +168,18 @@ let TotalAmount = () => {
 
 TotalAmount();
 
-/**
- * ! Used to clear cart, and remove everything from local storage
+/*
+  Used to clear cart, and remove everything from local storage
  */
+
+let checkOutItems = () => {
+  basket = [];
+  generateCartItems();
+  calculation();
+  localStorage.setItem("data", JSON.stringify(basket));
+
+  return (label.innerHTML = `<h2 class='purchase'>Thank you for choosing us. Keep on rocking!</h2>`);
+};
 
 let clearCart = () => {
   basket = [];

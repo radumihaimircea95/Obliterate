@@ -9,9 +9,11 @@
 }
 
 body {
-  background-color: black;
-  background-position: center;
-  background-image: url("https://wallpapercave.com/wp/wp4005721.jpg");
+  background-size: cover;
+  background-image: url("https://wallpaperforu.com/wp-content/uploads/2021/04/Wallpaper-Metallica-James-Hetfield-Bw-Hd-Music-1920x1080p3434.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
 }
 
 i {
@@ -24,6 +26,13 @@ h2 {
   font-size: 60px;
   text-shadow: 2px 2px whitesmoke;
 }
+#logo {
+  border: 2px solid white;
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 8px 8px rgb(176, 0, 0);
+}
 
 a {
   text-decoration: none;
@@ -34,12 +43,13 @@ a {
 * ! Navbar STyles are here
 **/
 
-img {
+/* #avatar {
   width: 200px;
   height: 200px;
-}
+} */
 
 .navbar {
+  /* background-image: url("https://wallpaperaccess.com/full/2755606.jpg"); */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -50,11 +60,22 @@ img {
   border-bottom: 2px solid white;
   align-items: center;
   width: 100%;
+  background-attachment: fixed;
+}
+
+.nav-text {
+  font-size: 100px;
+  font-family: "Pastor of Muppets";
 }
 .icons {
   display: flex;
   gap: 50px;
   align-items: center;
+  background-color: black;
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 8px 8px rgb(176, 0, 0);
 }
 
 .cart {
@@ -83,10 +104,11 @@ img {
   color: white;
   font-size: 35px;
 }
+.fa-user:hover {
+  color: rgb(176, 0, 0);
+}
 
-/**
-* ! Shop items styles are here
-**/
+/* Shop items styles are here */
 .slogan {
   text-align: center;
   font-size: 40px;
@@ -234,12 +256,10 @@ img {
   border-radius: 10px;
   cursor: pointer;
 }
-/**
-* ! style rules for shopping-cart
-**/
+/* style rules for shopping-cart */
 
 .cartPage {
-  background: black;
+  background-image: url("https://hdwallpaperim.com/wp-content/uploads/2017/08/24/105582-metal-metal_music-Slipknot.jpg");
 }
 
 .shopping-cart {
@@ -256,9 +276,7 @@ img {
   align-self: center;
 }
 
-/**
-* ! style rules for cart-item
-**/
+/* style rules for cart-item */
 
 .cart-item {
   border: 2px solid #212529;
@@ -333,6 +351,13 @@ img {
   background-color: black;
 }
 
+.purchase {
+  color: whitesmoke;
+  border: 4px solid whitesmoke;
+  border-radius: 10px;
+  background-color: rgb(176, 0, 0);
+  text-shadow: 2px 2px black;
+}
 /* details page css */
 
 .details-page-btn {
@@ -345,7 +370,7 @@ img {
 }
 /* admin page styles */
 .admin-page-body {
-  background: none;
+  background-image: url("https://www.revolvermag.com/sites/default/files/media/images/article/ratmlede-l1070839.jpg");
 }
 
 .header p {
@@ -385,7 +410,8 @@ img {
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
-  border: 2px solid black;
+  border: 2px solid whitesmoke;
+  box-shadow: 4px 4px whitesmoke;
   border-radius: 5px;
   padding: 20px;
   margin: auto;
@@ -396,7 +422,8 @@ img {
   display: flex;
   flex-direction: column;
   gap: 25px;
-  border: 2px solid red;
+  border: 2px solid whitesmoke;
+  box-shadow: 4px 4px whitesmoke;
   border-radius: 5px;
   padding: 20px;
   margin: auto;
@@ -404,7 +431,9 @@ img {
   background-color: black;
   margin-top: 40px;
 }
-
+.hidden {
+  display: none;
+}
 .admin-container .add-product-header {
   display: flex;
   justify-content: space-between;
@@ -453,4 +482,9 @@ img {
 .add-product-container #gender {
   width: 80%;
   font-family: "DamnedDeluxe";
+}
+
+/* details page */
+.details-body {
+  background-image: url("https://images6.alphacoders.com/404/thumb-1920-404279.png");
 }

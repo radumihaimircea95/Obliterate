@@ -21,21 +21,18 @@
   </head>
   <body class="admin-page-body">
     <div class="navbar">
-      <a href="index.html">
-        <h2>Obliterate</h2>
+      <a href="../index.html">
+        <h2 id="logo">Obliterate</h2>
       </a>
-      <img
-        src="https://static.vecteezy.com/system/resources/thumbnails/004/246/728/small_2x/illustration-bull-head-with-skull-head-on-black-background-free-vector.jpg"
-        alt=""
-        id="avatar"
-      />
+      <p class="nav-text">Heavy metal geaR</p>
+      <!-- <img src="./images/avatar.png" alt="" id="avatar" /> -->
       <div class="icons">
-        <a href="pages/admin.html">
+        <a href="./admin.html">
           <div class="admin">
             <i class="fa-solid fa-user"></i>
           </div>
         </a>
-        <a href="pages/cart.html">
+        <a href="./cart.html">
           <div class="cart">
             <i class="bi bi-cart2"></i>
             <div id="cartAmount" class="cartAmount">0</div>
@@ -46,9 +43,10 @@
     <div class="admin-container">
       <div class="header">
         <p>Manage products</p>
-        <div><button>+ Add new item</button></div>
+        <div><button id="add-new-product">+ Add new item</button></div>
       </div>
-      <div class="add-product-container">
+      <div class="add-product-message"></div>
+      <div class="add-product-container hidden">
         <div class="add-product-header">
           <p>Add new product</p>
           <div>
