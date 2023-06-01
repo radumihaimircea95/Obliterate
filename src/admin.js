@@ -1,5 +1,6 @@
-import { addNewProduct } from "./products.js";
+import { addNewProduct, getAllProducts, deleteProduct } from "./products.js";
 import { showConfirmationMessage } from "./utils.js";
+
 const nameInputElement = document.querySelector(".add-product-form #name");
 const imageInputElement = document.querySelector(".add-product-form #image");
 const descriptionInputElement = document.querySelector(
@@ -10,48 +11,99 @@ const sizeInputElement = document.querySelector(".add-product-form #size");
 const genderInputElement = document.querySelector(".add-product-form #gender");
 const quantityInputElement = document.querySelector(".add-product-form #qty");
 
+const populateProductsTable = async () => {
+  const products = await getAllProducts();
+  console.log(products);
+
+  const tableContent = products
+    .map((product, index) => {
+      return `
+        <tr>
+          <th scope="row">${index + 1}</th>
+          <td><img src="${product.imgURL}" width="50" height="50"></td>
+          <td>${product.name}</td>
+          <td>${product.price}</td>
+          <td>
+            <button id="${product.id}" class="btn btn-danger delete-product">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+            <button class="btn btn-warning">
+              <i class="fa-solid fa-pencil"></i>
+            </button>
+          </td>
+        </tr>
+      `;
+    })
+    .join("");
+
+  const productTableBody = document.getElementById("product-table-body");
+  if (productTableBody) {
+    productTableBody.innerHTML = tableContent;
+  }
+};
+
 const addProduct = async () => {
   const product = {
     name: nameInputElement.value,
-    image: imageInputElement.value,
+    imgURL: imageInputElement.value,
     description: descriptionInputElement.value,
     price: priceInputElement.value,
     size: sizeInputElement.value,
     gender: genderInputElement.value,
     stock: quantityInputElement.value,
   };
-  await addNewProduct(product);
-
-  // const addProduct = async () => {
-  //   let response = await fetch(
-  //     "https://633028d1591935f3c88ad2bb.mockapi.io/products",
-  //     {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-  //         name: nameInputElement.value,
-  //         imgURL: imageInputElement.value,
-  //         description: descriptionInputElement.value,
-  //         price: priceInputElement.value,
-  //         size: sizeInputElement.value,
-  //         gender: genderInputElement.value,
-  //         stock: quantityInputElement.value,
-  //       }),
-  //     }
-  //   );
-  //   let data = await response.json();
-  //   console.log(data);
 
   const response = await addNewProduct(product);
   showConfirmationMessage(
     "add-product-message",
     response,
-    "Product succesfully added."
+    "Product successfully added!"
+  );
+
+  if (response.ok) {
+    populateProductsTable();
+    sendMessageToMainPage(product);
+  }
+};
+
+const sendMessageToMainPage = (product) => {
+  window.opener.postMessage(
+    {
+      action: "addProduct",
+      product: product,
+    },
+    "*"
   );
 };
 
-document.getElementById("add-item").addEventListener("click", addProduct);
+const addNewItemButton = document.getElementById("add-item");
+if (addNewItemButton) {
+  addNewItemButton.addEventListener("click", addProduct);
+}
 
-document.getElementById("add-new-product").addEventListener("click", () => {
-  document.querySelector(".add-product-container").classList.toggle("hidden");
-});
+const addNewProductButton = document.getElementById("add-new-product");
+if (addNewProductButton) {
+  addNewProductButton.addEventListener("click", () => {
+    const addProductContainer = document.querySelector(
+      ".add-product-container"
+    );
+    if (addProductContainer) {
+      addProductContainer.classList.toggle("hidden");
+    }
+  });
+}
+
+const productTableBody = document.getElementById("product-table-body");
+if (productTableBody) {
+  productTableBody.addEventListener("click", async (event) => {
+    if (event.target.classList.contains("delete-product")) {
+      const productId = event.target.id;
+      const response = await deleteProduct(productId);
+      if (response && response.ok) {
+        await populateProductsTable();
+      }
+    }
+  });
+}
+
+window.addEventListener("DOMContentLoaded", populateProductsTable);

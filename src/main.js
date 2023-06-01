@@ -109,3 +109,16 @@ let calculation = () => {
 };
 
 calculation();
+
+const addNewProductToShop = (product) => {
+  shopItemsData.push(product);
+  generateShop();
+};
+
+// Ascultă evenimentul de mesaj de la pagina de administrare (admin.html)
+window.addEventListener("message", (event) => {
+  if (event.data.action === "addProduct") {
+    const product = event.data.product;
+    addNewProductToShop(product);
+  }
+});

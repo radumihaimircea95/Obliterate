@@ -1,7 +1,3 @@
-/**
-* ! Changing default styles of the browser
-**/
-
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +6,7 @@
 
 body {
   background-size: cover;
-  background-image: url("https://wallpaperforu.com/wp-content/uploads/2021/04/Wallpaper-Metallica-James-Hetfield-Bw-Hd-Music-1920x1080p3434.jpg");
+  background-image: url("https://1035thearrow.com/wp-content/uploads/sites/11/2020/02/GettyImages-1124622103.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: 100%;
@@ -39,23 +35,41 @@ a {
   color: white;
 }
 
-/**
-* ! Navbar STyles are here
-**/
-
 /* #avatar {
   width: 200px;
   height: 200px;
 } */
+footer {
+  background-color: #f0f0f0;
+  padding: 20px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#foot-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+#foot-list-item {
+  display: inline-block;
+  margin: 0 10px;
+}
 
 .navbar {
-  /* background-image: url("https://wallpaperaccess.com/full/2755606.jpg"); */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: black;
   color: white;
-  padding: 25px 60px;
+  padding: 30px 60px;
   margin-bottom: 30px;
   border-bottom: 2px solid white;
   align-items: center;
@@ -66,6 +80,10 @@ a {
 .nav-text {
   font-size: 100px;
   font-family: "Pastor of Muppets";
+}
+
+#reverse-font {
+  font-family: "Pastor of Muppets Flipped";
 }
 .icons {
   display: flex;
@@ -110,12 +128,18 @@ a {
 
 /* Shop items styles are here */
 .slogan {
+  padding-top: 200px;
   text-align: center;
   font-size: 40px;
   margin-bottom: 50px;
-  background-color: white;
+  background-color: whitesmoke;
+}
+.slogan h2 {
+  text-shadow: 4px 4px black;
 }
 .shop {
+  padding-top: 50px;
+  padding-bottom: 100px;
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
@@ -396,6 +420,17 @@ a {
   cursor: pointer;
 }
 
+.add-product-message {
+  font-family: "YouMurderer BB";
+  font-size: 45px;
+  color: whitesmoke;
+  text-shadow: 2px 2px rgb(176, 0, 0);
+  text-align: center;
+  padding: 30px 0px;
+  margin-top: 20px;
+  background-color: black;
+}
+
 .add-product-header button {
   font-size: 30px;
   font-family: "YouMurderer BB";
@@ -405,7 +440,9 @@ a {
   color: whitesmoke;
   padding: 5px;
 }
-
+.admin-container {
+  padding-top: 200px;
+}
 .admin-container .header {
   display: flex;
   justify-content: space-between;
@@ -487,4 +524,21 @@ a {
 /* details page */
 .details-body {
   background-image: url("https://images6.alphacoders.com/404/thumb-1920-404279.png");
+}
+
+/* CSS pentru designul responsive */
+@media (max-width: 768px) {
+  .navbar {
+    background-color: black;
+    background-image: none;
+  }
+  .nav-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-text {
+    font-size: 14px;
+  }
 }

@@ -17,9 +17,19 @@ export const getProductsById = async (id) => {
 export const addNewProduct = async (product) => {
   const response = await fetch(PRODUCTS_URL, {
     method: "POST",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(product),
   });
+
+  return response;
+};
+
+export const deleteProduct = async (id) => {
+  const response = await fetch(`${PRODUCTS_URL}/${id}`, {
+    method: "DELETE",
+  });
+
+  return response;
 };
